@@ -16,9 +16,14 @@ Because the book reviews json file is almost 20 GB I cannot open it with Jupyter
 [insert code snippets?]
 
 ## Additional data to augment review data
-Becasue the book review data includes ASIN codes, but no title or genre information we need additional book data in order to subset the large review data base into genre sets for the Machine Learning, Natural Language Processing goal of the Capstone.
-Google Books API query for Invertebrate Biology textbooks with API key masked: https://www.googleapis.com/books/v1/volumes?q=science+biology+invertebrate+nonfiction&maxResults=10&startIndex=0&printType=books&subject:textbook&key=xxxxxx
+Because the book review data includes ASIN codes, but no title or genre information we need additional book data in order to subset the large review data base into genre sets for the Machine Learning, Natural Language Processing goal of the Capstone.
+Google Books API query for Invertebrate Biology textbooks with API key masked: 
+
+https://www.googleapis.com/books/v1/volumes?q=science+biology+invertebrate+nonfiction&maxResults=10&startIndex=0&printType=books&subject:textbook&key=xxxxxx
+
+
 The results of this query are nested JSON with nested objects and arrays. To access the key:value pairs of interest I used I have coded my API query in Jupyter Notebook with 'requests.get' and I have used 'json_normalize' from pandas.io.json to flatten the nested json from the API. 
 [insert code]
+
 In addition, 
 
