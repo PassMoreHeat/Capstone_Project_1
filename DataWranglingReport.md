@@ -19,11 +19,13 @@ Because the book reviews json file is almost 20 GB I cannot open it with Jupyter
 Because the book review data includes ASIN codes, but no title or genre information we need additional book data in order to subset the large review data base into genre sets for the Machine Learning, Natural Language Processing goal of the Capstone.
 Google Books API query for Invertebrate Biology textbooks with API key masked: 
 
-https://www.googleapis.com/books/v1/volumes?q=science+biology+invertebrate+nonfiction&maxResults=10&startIndex=0&printType=books&subject:textbook&key=xxxxxx
+https://www.googleapis.com/books/v1/volumes?q=science+biology+invertebrate+nonfiction&maxResults=40&startIndex=0&printType=books&subject:textbook&key=xxxxxx
 
 
-The results of this query are nested JSON with nested objects and arrays. To access the key:value pairs of interest I used I have coded my API query in Jupyter Notebook with 'requests.get' and I have used 'json_normalize' from pandas.io.json to flatten the nested json from the API. 
-[insert code]
+The results of this query are nested JSON with nested objects and arrays. To access the key:value pairs of interest I used I have coded my API query in Jupyter Notebook with 'requests.get' and I have used 'json_normalize' from pandas.io.json to flatten the nested json from the API. Useful fields are: 'title', 'author', and 'ISBN_10'.
 
-In addition, 
+In Jupyter Notebook I queried the Google Books API x times, with 40 results per query. By normalizing the JSON object I accessed the nested fields of interest and compiled a DataFrame of xx book titles & ISBN_10 codes for my Invertebrate Textbook Genre Machine Learning Model.
+
+## Using ISBN genre list to subset book review data set
+The first challenge of my Capstone data wrangling is to limit the huge number of book review data and subset to a set of reviews within a specific genre. The original book review data is already cleaned and 'de-duplicated', so the subset data frame of reviews is ready for the the next step of machine learning.
 
