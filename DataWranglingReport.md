@@ -13,7 +13,7 @@ Consumer reviews and ratings. I have a dataset of over 22 million book reviews f
   * See McAuley et al. 2015, He & McAuley 2016. Full citations below.
 
 ## Steps to access book review data
-Because the book reviews json file is almost 20 GB I cannot open it with Jupyter Notebook. Instead I installed MongoDB and Studio 3T to access the json as a database file. Then, in Jupyter Notebook with PyMongo I can use aggregation functions to match the review documents I want to use (within a genre) for the Machine Learning algorithms.
+The book reviews json file is almost 20 GB. Therefore, I cannot open it with Jupyter Notebook. Instead I installed MongoDB and Studio 3T to access the json as a database file. Then, in Jupyter Notebook with PyMongo I can use aggregation functions to match the review documents I want to use (within a genre) for the Machine Learning algorithms.
 
 ## Additional data to augment review data
 Because the book review data includes ASIN codes, but no title or genre information we need additional book data in order to identify the review documents in the large review data base that match the genre of interest for the Machine Learning, Natural Language Processing goal of the Capstone.
@@ -35,7 +35,7 @@ df3['id_isbn10']=df3['id_isbn10'].apply(lambda x:x[0] if len(x) > 0 else 'None')
 3. In Jupyter Notebook I queried the Google Books API 5 times, with 40 results per query. By normalizing the JSON object I accessed the nested fields of interest and compiled a DataFrame of 200 book titles & ISBN_10 codes for my Invertebrate Textbook Genre Machine Learning Model.
 
 4. After I flattened and accessed the fields from the Google Books json requests I 
-   * kept only the columns of intereest [title, subtitle, descrption, ISBN_10_]
+   * kept only the columns of interest [title, subtitle, descrption, ISBN_10_]
    * concatenated the 5 results files
    * deleted rows with no ISBN code
    * renamed columns, and
