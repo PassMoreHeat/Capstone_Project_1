@@ -22,7 +22,7 @@ Because the book review data includes ASIN codes, but no title or genre informat
 
 2. The results of this query are nested JSON with nested objects and arrays. To access the key:value pairs of interest I coded my API query in Jupyter Notebook with 'requests.get' and I have used 'json_normalize' from pandas.io.json to flatten the nested json from the API. Useful fields are: 'title', 'author', 'description', and 'ISBN_10'. In addition, I access the nested array containing ISBN_10 I used the apply() function to access each line:
 
-```
+```python
 # 'normalize' response json into a flat table
 df3 = pd.io.json.json_normalize(data =json_data3['items'])
 # use apply() to process each line and get ISBN_10
@@ -44,7 +44,7 @@ df3['id_isbn10']=df3['id_isbn10'].apply(lambda x:x[0] if len(x) > 0 else 'None')
 ## Using ISBN genre list to subset book review data set
 The biggest challenge of my Capstone data wrangling is to limit the huge number of book review data and subset to a set of reviews within a specific genre. The original book review data is already cleaned and 'de-duplicated', so after aggregating the MongoDB collection of reviews to keep only one genre (Invertebrate Biology Textbooks)  the data are ready for the the next step of machine learning.
 
-```
+```python
 # build  pipline for aggregating collection documents
 import pprint
 pipeline = [
@@ -54,7 +54,7 @@ q = db.command('aggregate','reviews_Books', pipeline=pipeline, explain=True)
 from pandas import DataFrame
 invert_revs = DataFrame(list(db.reviews_Books.aggregate(pipeline)))
 ```
-## Working Review Collection
+## Working Genre Review Collection
 After completing the data wrangling to aggregate a subsetted collection of Amazon book reviews within the specified genre I have a DataFrame of xxx reviews for xx books.
 
 ### Sources:
